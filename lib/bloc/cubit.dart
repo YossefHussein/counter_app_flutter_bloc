@@ -21,7 +21,7 @@ class AppCubit extends Cubit<AppStates> {
 
 // lessen to counter
   void minus() {
-    emit(Minus());
     counter--;
+    emit(Minus());
   }
 }

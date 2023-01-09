@@ -38,10 +38,17 @@ class AppCounter extends StatelessWidget {
                           },
                           child: const Text('plus'),
                         ),
-                        Text('${AppCubit.get(context).counter}'),
+                        Text(
+                          '${AppCubit.get(context).counter}',
+                          style: const TextStyle(
+                            fontSize: 40,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                         TextButton(
                           onPressed: () {
                             AppCubit.get(context).minus();
+                            AppCubit.get(context).removeZeroError();
                           },
                           child: const Text('minus'),
                         ),

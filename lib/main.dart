@@ -13,54 +13,54 @@ class AppCounter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: BlocProvider(
+    return BlocProvider(
         create: (context) => AppCubit(),
         child: BlocConsumer<AppCubit, AppStates>(
           listener: (context, state) {},
           builder: (context, state) {
-            return Scaffold(
-              appBar: AppBar(
-                title: Text('counter is : ${AppCubit.get(context).counter}'),
-              ),
-              body: Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    const Text('Click on any button to test counter'),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        TextButton(
-                          onPressed: () {
-                            AppCubit.get(context).plus();
-                          },
-                          child: const Text('plus'),
-                        ),
-                        Text(
-                          '${AppCubit.get(context).counter}',
-                          style: const TextStyle(
-                            fontSize: 40,
-                            fontWeight: FontWeight.bold,
+            return MaterialApp(
+              home: Scaffold(
+                appBar: AppBar(
+                  title: Text('counter is : ${AppCubit.get(context).counter}'),
+                ),
+                body: Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      const Text('Click on any button to test counter'),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          TextButton(
+                            onPressed: () {
+                              AppCubit.get(context).plus();
+                            },
+                            child: const Text('plus'),
                           ),
-                        ),
-                        TextButton(
-                          onPressed: () {
-                            AppCubit.get(context).minus();
-                            AppCubit.get(context).removeZeroError();
-                          },
-                          child: const Text('minus'),
-                        ),
-                      ],
-                    ),
-                  ],
+                          Text(
+                            '${AppCubit.get(context).counter}',
+                            style: const TextStyle(
+                              fontSize: 40,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          TextButton(
+                            onPressed: () {
+                              AppCubit.get(context).minus();
+                              AppCubit.get(context).removeZeroError();
+                            },
+                            child: const Text('minus'),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
             );
           },
         ),
-      ),
     );
   }
 }
